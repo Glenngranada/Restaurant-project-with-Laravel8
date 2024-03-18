@@ -28,7 +28,7 @@
     {{-- navbar --}}
     <header>
 
-       <a href="/" class="logo"><i class="fas fa-utensils"></i>RESTOTAMRI</a>
+       <a href="/" class="logo"><i class="fas fa-utensils"></i>QUICKSERVE</a>
 
         <nav class="navbar">
             <a href="/" class="active">home</a>
@@ -82,11 +82,11 @@
          <div class="box-container">
              <div class="box">
                  <h3>locations</h3>
-                 <a href="#">Agadir</a>
-                 <a href="#">Casablanca</a>
-                 <a href="#">Marakesh</a>
-                 <a href="#">Madrid Spain</a>
-                 <a href="#">Doha Qatar</a>
+                 <a href="#">Caloocan</a>
+                 <a href="#">Batangas</a>
+                 <a href="#">Marikinah</a>
+                 <a href="#">Makati</a>
+                 <a href="#">Bacolod</a>
              </div>
             <div class="box">
                 <h3>quick links</h3>
@@ -99,20 +99,20 @@
             </div>
             <div class="box">
                 <h3>contact info</h3>
-                <a href="#">+212-643488319</a>
-                <a href="#">+212-643488319</a>
+                <a href="#">+64-9232123452</a>
+                <a href="#">+64-9452123412</a>
                 <a href="#">abderrahmane.amerhhi@gmail.com</a>
-                <a href="#">tamri2002@gmail.com</a>
-                <a href="#">tamri agadir 37782</a>
+                <a href="#">glennmarkgranada@gmail.com</a>
+                
             </div>
             <div class="box">
                 <h3>follow us</h3>
-                <a href="https://web.facebook.com/profile.php?id=100004412416678">facebook</a>
-                <a href="https://www.instagram.com/abderrahmane_amerrhi/">instagram</a>
-                <a href="https://www.linkedin.com/in/abderrahmane-amerrhi-807b40201/">linkedin</a>
+                <a href="https://www.facebook.com/JamesReid.Careless">facebook</a>
+                <a href="https://www.instagram.com/">instagram</a>
+                <a href="https://www.linkedin.com/login">linkedin</a>
             </div>
          </div>
-         <div class="credit">copyright <i class="fa-solid fa-copyright"></i> 2022 by <span>ABDERRAHMANE AMERRHI</span></div>
+         <div class="credit">copyright <i class="fa-solid fa-copyright"></i> 2024 by <span>Glenn Mark Granada</span></div>
      </section>
 
      <!-- foter section end -->

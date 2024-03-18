@@ -50,7 +50,7 @@
                </div>
                 <div class="Card">
                     <div>
-                        <div class="numbers">{{$Earning}}DH</div>
+                        <div class="numbers">{{$Earning}} PHP</div>
                         <div class="CardName">Earning</div>
                     </div>
                     <div class="iconBox">

@@ -96,7 +96,7 @@ class MenuController extends Controller
     {
         //
         $request->validate([
-            'title' => 'required|min:3|max:20',
+            'title' => 'required|min:3|max:50',
             'description' => 'required|min:5',
             'pric' => 'numeric|Nullable',
             'old_price' => 'numeric|Nullable',
@@ -164,10 +164,9 @@ class MenuController extends Controller
     public function update(UpdateMenuRequest $request, $id)
     {
         //
-
         $menu = Menu::where('id', $id)->first();
         $request->validate([
-            'title' => 'required|min:3|max:20',
+            'title' => 'required|min:3|max:50',
             'description' => 'required|min:5',
             'pric' => 'numeric|Nullable',
             'old_price' => 'numeric|Nullable',
@@ -192,14 +191,30 @@ class MenuController extends Controller
         } elseif ($request->old_price == "") {
             $request->old_price = 0;
         }
-        $menu->update([
-            'title' => $request->title,
-            'description' => $request->description,
-            'pric' => $request->pric,
-            'old_price' => $request->old_price,
-            'image' => $menu->image,
-            'categorie_id' => $request->categorie_id,
-        ]);
+        // old update code
+        // $menu->update([
+        //     'title' => $request->title,
+        //     'description' => $request->description,
+        //     'pric' => $request->pric,
+        //     'old_price' => $request->old_price,
+        //     'image' => $menu->image,
+        //     'categorie_id' => $request->categorie_id,
+        //     'ROYALTY' => $request->ROYALTY,
+        // ]);
+        // old update code end
+
+        // Handle ROYALTY field
+        $menu->ROYALTY = $request->ROYALTY;
+
+        // Update other fields
+        $menu->title = $request->title;
+        $menu->description = $request->description;
+        $menu->pric = $request->pric ?? 0;
+        $menu->old_price = $request->old_price ?? 0;
+        $menu->categorie_id = $request->categorie_id;
+
+        // Save menu
+        $menu->save();
         return redirect()->route('Menu.index')->with(['success' => 'menu updated']);
     }
 

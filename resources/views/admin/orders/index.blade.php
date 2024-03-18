@@ -49,7 +49,7 @@
 
                 <div class="Card">
                     <div>
-                        <div class="numbers">{{$Earning}}DH</div>
+                        <div class="numbers">{{$Earning}} PHP</div>
                         <div class="CardName">Earning</div>
                     </div>
                     <div class="iconBox">
@@ -107,8 +107,8 @@
                                                     </td>
                                                     <td>{{$order->menu_name}}</td>
                                                     <td>{{$order->qte}}</td>
-                                                    <td>{{$order->price}} MAD</td>
-                                                    <td>{{$order->total}} MAD</td>
+                                                    <td>{{$order->price}} PHP</td>
+                                                    <td>{{$order->total}} PHP</td>
                                                     <td>
                                                          @if ($order->paid)
                                                           <i class="fa fa-check text-success"></i>

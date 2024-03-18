@@ -8,7 +8,28 @@
 
            <div class="swiper home-slider">
                <div class="swiper-wrapper wrapper">
-                   <div class="swiper-slide slide">
+                    @foreach ($royaltymenus as $rmenu)
+                    
+                            <div class="swiper-slide slide">
+                                <div class="content">
+                                    <span>our royalty dishes {{ $loop->index+1}}</span>
+                                    <h3>{{$rmenu->title}}</h3>
+                                    <p>{{$rmenu->description}}</p>
+                                    <!-- <a href="#" class="btn">order now</a> -->
+                                    <form action="{{route('cart.add',$rmenu->id)}}" method="POST">                    
+                                        <input type="hidden" name="quantity"  value="1">
+                                        @csrf
+                                        <button
+                                        type="submit"
+                                        class="btn">add to cart</button>
+                                    </form>
+                                </div>
+                                <div class="image">
+                                    <img src="{{asset('images/menu/'.$rmenu->image)}}" alt="">
+                                </div>
+                            </div>
+                    @endforeach
+                   <!-- <div class="swiper-slide slide">
                        <div class="content">
                            <span>our royalty dishes</span>
                            <h3>Couscous</h3>
@@ -18,9 +39,9 @@
                        <div class="image">
                            <img src="{{asset('images/backgrounds/CouscoBack.png')}}" alt="">
                        </div>
-                   </div>
+                   </div> -->
 
-                   <div class="swiper-slide slide">
+                   <!-- <div class="swiper-slide slide">
                         <div class="content">
                             <span>our royalty dishes</span>
                             <h3>Bastilla</h3>
@@ -46,11 +67,9 @@
                         <div class="image">
                             <img src="{{asset('images/backgrounds/fishback.png')}}" alt="">
                         </div>
-                    </div>
+                    </div> -->
                </div>
-
                <div class="swiper-pagination"></div>
-
            </div>
        </section>
 
@@ -77,7 +96,7 @@
                   <img src="{{asset('images/menu/'.$propmenu->image)}}" alt="">
                   <h3>{{$propmenu->title}}</h3>
 
-                  <span>{{$propmenu->pric}} MAD</span>
+                  <span>{{$propmenu->pric}}  PHP</span>
                   <form action="{{route('cart.add',$propmenu->id)}}" method="POST">
 
                     <input type="hidden" name="quantity"  value="1">
@@ -108,12 +127,11 @@
                 <p>Our restaurant features traditional Moroccan dishes delicious and varied and offers foreign dishes, especially Italian pizzas, plumbers and a variety of drinks and we have many branches in several cities in the Kingdom and my brother's
                  branches outside the Kingdom</p>
                 <p>
-                    We offer our dishes in high quality we make sure the health of
+                    We offer our dishes in high quality we make sure the Enjoyment of
                     our customers and care for them and work in our restaurants
                      the most experienced cooks we offer many additional services
-                      excellent discounts you will not find except in our restaurants,
-                       advances evenings on the music of KNAWA and the  historical
-                        Moroccan and African  music , free food delivery  ,Can you also pay easily with your bank card or through your mobile phone,
+                      excellent discounts you will not find except in our restaurants.
+                      Can you also pay easily with your bank card or through your mobile phone,
                         we hope
                       to like you and visit our restaurants with your friends and family and enjoy the dishes.
                 </p>
@@ -164,9 +182,9 @@
                         <p>
                             {{$menu->description}}
                         </p>
-                        <span class="price">{{$menu->pric}} MAD</span>
+                        <span class="price">{{$menu->pric}}  PHP</span>
                         <form action="{{route('cart.add',$menu->id)}}" method="POST">
-                            {{--  nsift qte =1 f index  cart --}}
+                            
                             <input type="hidden" name="quantity"  value="1">
                             @csrf
                             <button
@@ -185,47 +203,31 @@
     <!-- menu section end -->
 
     <!-- review section start -->
-    @if ($reviews->count())
-    <section class="review" id="review">
-        <h3 class="sub-heading">customer's review</h3>
-        <h1 class="heading">what they say</h1>
-            <div class="swiper-container review-slider ">
-                    <div class="swiper-wrapper">
-
-            @foreach ($reviews as $review)
-                     @if ($review->status)
-                          <div class="swiper-slide slide">
+    @if ($reviews->count() > 0)
+        <section class="review" id="review">
+            <h3 class="sub-heading">Customer's Reviews</h3>
+            <h1 class="heading">What They Say</h1>
+            <div class="swiper-container review-slider">
+                <div class="swiper-wrapper">
+                    @foreach ($reviews as $review)
+                        @if ($review->status)
+                            <div class="swiper-slide slide">
                                 <i class="fas fa-quote-right"></i>
                                 <div class="userrev">
-                                    @if ($review->user->image === 'image')
-                                    <img src="{{asset('images/profile/userImage.png')}}" alt="user-image">
-                                    @else
-                                    <img src="{{asset('images/profile/'.$review->user->image)}}" alt="user-image">
-                                    @endif
-
+                                    <img src="{{ $review->user->image === 'image' ? asset('images/profile/userImage.png') : asset('images/profile/'.$review->user->image) }}" alt="user-image">
                                     <div class="user-info">
-                                        <h3>{{$review->user->name}}</h3>
+                                        <h3>{{ $review->user->name }}</h3>
                                     </div>
-
                                 </div>
-                                    <p>
-                                    {{$review->comment}}
-                                    </p>
-
+                                <p>{{ $review->comment }}</p>
                             </div>
-
-                     @endif
-
-
-            @endforeach
-
-
-
-
-           </div>
-        </div>
-    </section>
-     @endif
+                        @endif
+                    @endforeach
+                </div>
+                <div class="review-swiper-pagination" style="text-align:center"></div>
+            </div>
+        </section>
+    @endif
     <!-- review section end -->
 
      <!-- Ordre Section start -->

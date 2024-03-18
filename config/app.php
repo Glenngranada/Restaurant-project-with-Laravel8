@@ -200,6 +200,7 @@ return [
         'Cart' => Darryldecode\Cart\Facades\CartFacade::class, // cart class
         'PayPal' => Srmklive\PayPal\Facades\PayPal::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class, // Excel class alias
+        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
 
 
         // ...

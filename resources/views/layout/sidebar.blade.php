@@ -28,7 +28,7 @@
                 <li>
                     <a href="#">
                         <span class="icon"><ion-icon name="restaurant"></ion-icon></span>
-                        <span class="title">Resto Tamri</span>
+                        <span class="title">QuickServe</span>
                     </a>
                 </li>
                 <li>
@@ -72,7 +72,7 @@
                     @csrf
                    <button type="submit">
                         <span class="icon"><ion-icon name="log-out"></ion-icon></span>
-                        <span class="title">Sing out</span>
+                        <span class="title">Sign out</span>
                    </button>
                   </form>
                 </li>

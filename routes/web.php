@@ -12,6 +12,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\JadorMenuController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaypalPaymentController;
+use App\Http\Controllers\QRCodeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -121,5 +122,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('file-import-export', [UserController::class, 'fileImportExport']);
     Route::post('file-import', [UserController::class, 'fileImport'])->name('file-import');
     Route::get('file-export', [UserController::class, 'ExportAllUser'])->name('users-export');
-    Route::get('file-export/user/{id}', [UserController::class, 'ExportUser'])->name('Export-User'); // export kola user bohdo
+    Route::get('file-export/user/{id}', [UserController::class, 'ExportUser'])->name('Export-User'); // 
+});
+
+Route::get('/generate-qrcode', [QRCodeController::class, 'generate']);
+Route::get('/qrcode', [QrCodeController::class, 'index']);
+
+//barcode scanner route
+Route::get('/barcode-scanner', function () {
+    return view('barcode-scanner');
 });

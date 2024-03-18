@@ -50,7 +50,7 @@
 
                 <div class="Card">
                     <div>
-                        <div class="numbers">{{$Earning}}DH</div>
+                        <div class="numbers">{{$Earning}} PHP</div>
                         <div class="CardName">Earning</div>
                     </div>
                     <div class="iconBox">
@@ -100,17 +100,18 @@
                                                     <td>{{$menu->id}}</td>
                                                     <td>{{$menu->title}}</td>
                                                     <td>{{Str::limit($menu->description,10)}}</td>
-                                                    <td>{{$menu->pric}} MAD</td>
-                                                    <td>{{$menu->old_price}} MAD</td>
+                                                    <td>{{$menu->pric}} PHP</td>
+                                                    <td>{{$menu->old_price}} PHP</td>
                                                     <td>
-                                                        <img src="{{asset('images//menu/'.$menu->image)}}" alt="menu_image"
-                                                             class="img-fluid rounded-circle"
+                                                        <img src="{{asset('images/menu/'.$menu->image)}}" alt="menu_image"
+                                                             class="rounded-circle"
                                                              width="70"
                                                              height="70"
                                                         >
+                                                        
                                                     </td>
 
-                                                    <td class="d-flex flex-row justify-content-center align-items-center ">
+                                                    <td style="height: 100px" class="d-flex flex-row justify-content-center align-items-center ">
                                                         <a href="{{route('Menu.edit',$menu->id)}}" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
                                                         {{-- delete form --}}
                                                         <form id="{{$menu->id}}" action="{{route("Menu.destroy",$menu->id)}}" method="post" style="margin-left: 4px !important">

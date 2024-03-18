@@ -123,7 +123,7 @@ class UserController extends Controller
             'ville' => $request->ville,
         ]);
         return redirect()->route('user.login')->with([
-            'success' => 'Compte Created '
+            'success' => 'User Created '
         ]);
     }
 
@@ -144,7 +144,7 @@ class UserController extends Controller
         if (auth()->attempt(['email' => $request->email, 'password' => $request->password])) {
             //dd(auth()->user()->admin);
             //dd(auth()->attempt(['email' => $request->email, "password" => $request->password]));
-            // ila kan admin imchi ldashboear d admin ila kan user imchi l index
+            
             if (auth()->user()->admin) {
                 return redirect()->route('admin.index');
             } else {
@@ -152,7 +152,7 @@ class UserController extends Controller
             }
         } else {
             return redirect()->route('user.login')->with([
-                'error' => 'Email ou mot de passe est incorrect '
+                'error' => 'Email or password is incorrect '
             ]);
         }
     }
@@ -160,7 +160,7 @@ class UserController extends Controller
     public function profile($id)
     {
         $user = User::findOrFail($id);
-        // had script knt drto okhdmt b 2 d bview db ankhdm 4a b views whda
+       
         /*if ($user->admin) {
             return view('profiles.adminProfile')->with(['admin' => $user]);
         } else {
@@ -222,6 +222,7 @@ class UserController extends Controller
     // logout function
     public function logout()
     {
+        // dd(auth());
         if (auth()->user()->admin) {
             auth()->logout();
             return redirect()->route('user.login');

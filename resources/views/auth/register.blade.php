@@ -34,7 +34,7 @@
                             </div>
                              <div class="form-group mb-3">
                                 <i class="fas fa-solid fa-city"></i>
-                                <input type="city" class="myInput" placeholder="Ville" name="ville" id="username" required>
+                                <input type="city" class="myInput" placeholder="Address" name="ville" id="username" required>
                             </div>
                             <div class="form-group mb-3">
                                 <i class="fas fa-lock"></i>

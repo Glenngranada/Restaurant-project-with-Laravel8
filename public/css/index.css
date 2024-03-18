@@ -530,6 +530,7 @@ table {
 .cart-info {
     display: flex;
     flex-wrap: wrap;
+    width: 130px;
 }
 th {
     text-align: left;
@@ -621,7 +622,9 @@ th:last-child {
 }
 /*responsive cart style  */
 @media only screen and (max-width: 600px) {
-
+    .center-quant-el{
+        text-align: center;
+    }
 }
 
 /*********** responsive style *********************/
@@ -702,4 +705,10 @@ th:last-child {
         height: auto;
         width: 100%;
     }
+}
+
+
+.cart-quant-btn{
+    padding: 4px 8px;
+    border-radius: 4px 
 }

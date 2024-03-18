@@ -9,7 +9,7 @@ menu.onclick = () => {
 }
 window.onscroll = () => {
     menu.classList.remove('fa-times');
-    navbar.classList.remove('active');
+    navbar.classList.remove('active'); 
 }
 
 /*  Script bach 4antl3 lform d search
@@ -34,24 +34,24 @@ document.querySelector("#close").onclick = () => {
           el: ".swiper-pagination",
           clickable: true,
         },
-        loop: true, // loop true ib9a ithrk bohdo
+        loop: false, // loop true 
  });
 
 
 
- // ---------------------------- Swiper Script swiper dyal review fin kaynin coments dyal customers
+ // ---------------------------- Swiper Script swiper review coments customers
  var swiper = new Swiper(".review-slider", {
         spaceBetween: 20,
-        centeredSlides: true,
+        centeredSlides: false,
         autoplay: {
           delay: 7500,
           disableOnInteraction: false,
         },
         pagination: {
-          el: ".swiper-pagination",
+          el: ".review-swiper-pagination",
           clickable: true,
         },
-   loop: true,
+   loop: false,
    breakpoints: {
      0: {
        slidesPerView:1,
@@ -81,3 +81,17 @@ function fadeOut() {
 }
 
 window.onload = fadeOut;
+
+function incrementQuantity(itemId) {
+  var inputElement = document.getElementById('quantity_' + itemId);
+  var currentValue = parseInt(inputElement.value);
+  inputElement.value = currentValue + 1;
+}
+
+function decrementQuantity(itemId) {
+  var inputElement = document.getElementById('quantity_' + itemId);
+  var currentValue = parseInt(inputElement.value);
+  if (currentValue > 1) {
+      inputElement.value = currentValue - 1;
+  }
+}

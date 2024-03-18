@@ -20,39 +20,56 @@ class PaypalPaymentController extends Controller
         $provider = new PayPalClient;
     }*/
     public function handelPayment()
-    {
+    {   
         $userId = auth()->user()->id;
 
-        $data = [];
-        $data['items'] = [];
-
-        // add cart items in $data[items] array
         foreach (\Cart::session($userId)->getContent() as $item) {
-            array_push($data['items'], [
-                'name' => $item->name,
-                'price' => (int)($item->price / 9),
-                'desc'  =>  $item->associatedModel->description,
-                'qty' => $item->quantity
+            Order::create([
+                "user_id" => auth()->user()->id,
+                "menu_name" => $item->name,
+                "qte" => $item->quantity,
+                "price" => $item->price,
+                "total" => $item->price * $item->quantity,
+                "paid" => 1, //paid successfylly
+                'deliverde' => 0,
+
             ]);
+            \Cart::session($userId)->Clear();
         }
-        $data['invoice_id'] = auth()->user()->id;
-        $data['invoice_description'] = "Order #{$data['invoice_id']} Invoice";
-        $data['return_url'] = route('success.payment');
-        $data['cancel_url'] = route('cancel.payment');
+        return redirect()->route('resto.index')->with([
+            'success' => 'Order has been submitted.'
+        ]);
 
-        $total = 0;
-        foreach ($data['items'] as $item) {
-            $total += $item['price'] * $item['qty'];
-        }
-        $data['total'] = $total;
-        $paypalModule = new ExpressCheckout();
+        // $data = [];
+        // $data['items'] = [];
 
-        $res = $paypalModule->setExpressCheckout($data);
-        $res = $paypalModule->setExpressCheckout($data, true);
+        // // add cart items in $data[items] array
+        // foreach (\Cart::session($userId)->getContent() as $item) {
+        //     array_push($data['items'], [
+        //         'name' => $item->name,
+        //         'price' => (int)($item->price / 9),
+        //         'desc'  =>  $item->associatedModel->description,
+        //         'qty' => $item->quantity
+        //     ]);
+        // }
+        // $data['invoice_id'] = auth()->user()->id;
+        // $data['invoice_description'] = "Order #{$data['invoice_id']} Invoice";
+        // $data['return_url'] = route('success.payment');
+        // $data['cancel_url'] = route('cancel.payment');
 
-        return redirect($res['paypal_link']);
-        $data = [];
-        $data['items'] = [];
+        // $total = 0;
+        // foreach ($data['items'] as $item) {
+        //     $total += $item['price'] * $item['qty'];
+        // }
+        // $data['total'] = $total;
+        // $paypalModule = new ExpressCheckout();
+
+        // $res = $paypalModule->setExpressCheckout($data);
+        // $res = $paypalModule->setExpressCheckout($data, true);
+
+        // return redirect($res['paypal_link']);
+        // $data = [];
+        // $data['items'] = [];
     }
 
     public function CancelPayment()
@@ -85,5 +102,10 @@ class PaypalPaymentController extends Controller
                 'success' => 'Payment has been made successfully.'
             ]);
         }
+    }
+
+    function skipPayment(Request $request){
+        $userId = auth()->user()->id;
+
     }
 }

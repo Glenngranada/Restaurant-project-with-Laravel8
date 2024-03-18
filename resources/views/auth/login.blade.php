@@ -14,6 +14,7 @@
 
     <title>Login</title>
 </head>
+
 <body>
     <div class="row">
                     <div class="col-md-6 mx-auto my-4">
@@ -29,7 +30,12 @@
                         <form action="{{route('user.auth')}}" class="myForm text-center" method="POST">
                             @CSRF
                             <header>Login</header>
-
+                            
+                            @if(session('error'))
+                                <div class="alert alert-danger">
+                                    {{ session('error') }}
+                                </div>
+                            @endif
                             <div class="form-group mb-3">
                                 <i class="fas fa-envelope"></i>
                                 <input type="email" name="email" class="myInput" placeholder="Email" id="email" required>
@@ -38,6 +44,7 @@
                                 <i class="fas fa-lock"></i>
                                 <input type="password" min="9" name="password" class="myInput" placeholder="Password" id="password" required>
                             </div>
+                            
                             <div class="form-group mb-3">
                                 <span>
                                         <small>I don't have an account </small>,

@@ -33,14 +33,14 @@
                                      <label for="price" class="col-md-2 col-sm-3 form-label">Pric </label>
                                     <div class="input-group ">
                                             <input type="text" class="form-control" name="pric" value="{{$menu->pric}}" id="price" aria-label="Dollar amount (with dot and two decimal places)">
-                                             <span class="input-group-text">MAD</span>
+                                             <span class="input-group-text">PHP</span>
                                     </div>
                                 </div>
                                 <div class="row input-group mb-3">
                                     <label for="old_price" class="col-md-2 col-sm-3 form-label">Old Price</label>
                                    <div class="input-group ">
                                         <input type="text" class="form-control" name="old_price" value="{{$menu->old_price}}" id="old_price" aria-label="Dollar amount (with dot and two decimal places)">
-                                        <span class="input-group-text">MAD</span>
+                                        <span class="input-group-text">PHP</span>
                                     </div>
 
                                 </div>
@@ -58,6 +58,19 @@
                                            <option value="{{$cat->id}}" {{$menu->categorie_id == $cat->id ? 'selected' : ''}} >{{$cat->title}}</option>
                                         @endforeach
                                     </select>
+                                </div>
+
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="radio" name="ROYALTY" value="0" id="flexRadioDefault1" {{$menu->ROYALTY === 0 ? 'checked' : ''  }} >
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        IS NOT ROYALTY DISH
+                                    </label>
+                                    </div>
+                                    <div class="form-check mb-3">
+                                    <input class="form-check-input" type="radio" name="ROYALTY" value="1" id="flexRadioDefault2" {{$menu->ROYALTY === 1 ? 'checked' : ''  }} >
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        IS ROYALTY DISH
+                                    </label>
                                 </div>
 
                                 <div class="mb-3">

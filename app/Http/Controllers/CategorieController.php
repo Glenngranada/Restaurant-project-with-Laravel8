@@ -27,7 +27,7 @@ class CategorieController extends Controller
         //
         if (!empty($request->search)) {
             return view('admin.categories.index')->with([
-                'cats' => Categorie::where('title', 'like', "%{$request->search}%")->paginate(10),
+                'cats' => Categorie::where('title', 'like', "%{$request->search}%")->paginate(10), //% search query
                 'catsCount' => Categorie::count(),
                 'MenusCount' => Menu::count(),
                 'sales' => Order::where('paid', 1)->count(),

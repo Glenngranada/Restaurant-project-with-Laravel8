@@ -48,7 +48,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // is admin function bach nhded admin mn user 3adi
+    // is admin function 
     public function isAdmin()
     {
         return $this->admin ? true : false;
